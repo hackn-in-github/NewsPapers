@@ -1,0 +1,152 @@
+%#!ptex2pdf -l -u -ot '-synctex=1' 新聞配達部数
+%#!lualatex -synctex=1 新聞配達部数
+%#!lualatex --jobname=前期/新聞配達部数-fig1 新聞配達部数
+%#!xelatex -synctex=1 新聞配達部数
+%#!xelatex --jobname=前期/新聞配達部数-fig1 新聞配達部数
+%#!uplatex -shell-escape 新聞配達部数
+%#!uplatex 新聞配達部数
+%#LPR dvipdfmx -p a4 -r 1200 新聞配達部数
+% #LPR dvips -Ppdf -f 新聞配達部数.dvi | lpr
+%#MAKEINDEX mendex -g -s mystyle.ist 新聞配達部数
+%#!platex -shell-escape 新聞配達部数
+%#!platex 新聞配達部数
+%%% sudo tlmgr update --self --all
+%\documentclass[a4j,xelatex,ja=standard,magstyle=nomag*]{bxjsreport}% ドライバ指定は無し
+%\XeTeXgenerateactualtext=1 %PDF ファイルの検索やコピー & ペーストがうまく動作しない場合指定
+%\RequirePackage{luatex85}%\pdfナントカでエラーになったときに必要ってか02/01/2017時点で必要
+%hyperrefを新しい物にして不要になる
+\documentclass[a4j,papersize,landscape,uplatex,dvipdfmx,ja=standard,magstyle=nomag*]{bxjsreport}% ドライバ指定は無し
+%\documentclass[a4j,landscape,lualatex,ja=standard,magstyle=nomag*]{bxjsreport}% ドライバ指定は無し
+\setpagelayout{margin=15mm}%余白を若干狭く
+\usepackage{metalogo}% \XeLaTeX ロゴのため
+%% XeLaTeX
+%\usepackage{zxjatype}
+%\setjamainfont[BoldFont=IPAexGothic]{IPAexMincho}
+%\setjasansfont{IPAexGothic}
+%\setmonofont{IPAexGothic}
+%\setjamainfont[BoldFont=MogaMinExB]{MogaMinEx}
+%\setjasansfont{MogaGoEx}
+%\setmonofont{MogaGo}
+%\setjamainfont[BoldFont=YOzNb]{YOzN}
+%\setjasansfont{YOzNb}
+%\setmonofont{YOzNF}
+%\setjamainfont[BoldFont=Ume P Gothic]{Ume P Mincho}
+%\setjasansfont{Ume P Gothic}
+%\setmonofont{Ume Gothic}
+%\setjamainfont[BoldFont=TakaoPGothic]{TakaoPMincho}
+%\setjasansfont{TakaoPGothic}
+%\setmonofont{TakaoGothic}
+%\setjamainfont[BoldFont=mikachan-PB]{mikachan-P}
+%\setjasansfont{mikachan-PB}
+%\setmonofont{mikachan}
+%\setjamainfont{Migu 1P}
+%\setjasansfont{Migu 1P}
+%\setmonofont{Migu 1M}
+%\setjamainfont{M+ 1p}
+%\setjasansfont{M+ 1p}
+%\setmonofont{M+ 1m}
+%% LuaLaTeX-ja こっちの方が綺麗かも…
+%\setmainjfont[BoldFont=IPAexGothic]{IPAexMincho}
+%\setsansjfont{IPAexGothic}
+%\setmonofont{IPAexGothic}
+%\setmainjfont[BoldFont=MogaMinExB]{MogaMinEx}
+%\setsansjfont{MogaGoEx}
+%\setmonofont{MogaGo}
+%\setmainjfont[BoldFont=YOzNb]{YOzN}
+%\setsansjfont{YOzNb}
+%\setmonofont{YOzNF}
+%\setmainjfont[BoldFont=Ume P Gothic]{Ume P Mincho}
+%\setsansjfont{Ume P Gothic}
+%\setmonofont{Ume Gothic}
+%\setmainjfont[BoldFont=TakaoPGothic]{TakaoPMincho}
+%\setsansjfont{TakaoPGothic}
+%\setmonofont{TakaoGothic}
+%\setmainjfont[BoldFont=mikachan-PB]{mikachan-P}
+%\setsansjfont{mikachan-PB}
+%\setmonofont{mikachan}
+%\setmainjfont{Migu 1P}
+%\setsansjfont{Migu 1P}
+%\setmonofont{Migu 1M}
+%\setmainjfont{M+ 1p}
+%\setsansjfont{M+ 1p}
+%\setmonofont{M+ 1m}
+\makeatletter
+\newif\ifpapersize
+\newif\if@jsclass
+\newif\iftombow
+%% \ruby対策 %%
+\@ifundefined{kanjiskip}{\newlength\kanjiskip}{}%
+\@ifundefined{xkanjiskip}{\newlength\xkanjiskip}{}%
+%%%%%%%%%%%%%%
+\@ifundefined{zh}{\newlength\zh}{}%
+\makeatother
+\setlength{\zh}{1\zw}
+\usepackage{emath,EMproof,emathMw}
+%% edaenumerate環境の上部の間隔設定 edatopsep=-1\zh
+%---- mathabx使用時に指定
+\let\therefore\relax
+\let\because\relax
+\usepackage{mathabx}%
+%---------------------
+%\usepackage{newtxmath,newtxtext}%
+%\usepackage{mathptmx}%newtxの方がいいかな？
+\let\EMforeach=\foreach
+\MWsep{4pt}%
+\usepackage[enumitem]{tikzxelatexsetup}
+\usepackage{hyperref}
+\hypersetup{%
+ bookmarkstype=toc,%
+ bookmarksnumbered=true,%
+ colorlinks=true,%
+ urlcolor=blue,%
+ linkcolor=blue,%
+ setpagesize=false,%
+ pdftitle={},%
+ pdfauthor={飯島　徹},%
+ pdfsubject={},%
+ pdfkeywords={2016年,平成28年,前期,二次試験,数学,問題,詳解}%
+}%
+%\title{{\XeLaTeX}で日本語文書}
+%\author{七篠\ 権兵衛}
+% \today の出力はJSクラスと同様に西暦になる
+%(1)二行ならべる
+%(2)ベースライン間の距離が\baselineskipになるようにする
+%(3)上の行の「下端」と下の行の「上端」の間の縦方向の距離を測る
+%(4)(3)で測定した値と\lineskiplimitを比較する
+%(4-1)(3)の値>\lineskipならばそのまま
+%(4-2)そうでなければ，上の行の「下端」と下の行の「上端」の間を\lineskipにする
+\pagestyle{empty}%
+\lineskiplimit=1pt\relax
+\lineskip=2pt\relax
+\pgfrealjobname{新聞配達部数}%
+\SetPath{前期/}%
+%\includeonly{}%
+\begin{document}
+\tikzset{FN/.style={font=\normalsize}}%
+\begin{tikzpicture}[font=\Huge,yscale=1,>={Stealth[length=4mm]}]
+ \SetPoint*{O1(26,0);O2($(O1)+(-.5,0)$);O3($(O2)+(-.5,0)$);O4($(O3)+(-.5,0)$);O5($(O4)+(-.5,0)$);O6($(O5)+(-.5,0)$)}%
+ \node(仲町12)at(0,0)[e]{仲町1・2丁目[読売43部(金・土・日読売$+1$)]};
+ \node(仲町3)at(0,-1)[e]{仲町3丁目[読売16部(土・日報知$+1$)]};
+ \node(東町)at(0,-2)[e]{東町[読売20部]};
+ \node(柏台)at(0,-3)[e]{柏台[読売5部]};
+ \node(本町1)at(0,-4)[e]{本町1丁目[読売14部・報知1部(土・日・月読売$+1$)]};
+ \node(本町2)at(0,-5)[e]{本町2丁目[読売25部・報知1部]};
+ %
+ \node(後仲町2)at(0,-7)[e]{組換後：仲町2丁目[読売15部]};
+ \node(後仲町3)at(0,-8)[e]{組換後：仲町3丁目[読売17部(土・日報知$+1$)]};
+ \node(後東町)at(0,-9)[e]{組換後：東町[読売23部]};
+ \node(後仲町12)at(0,-10)[e]{組換後：仲町1・2丁目[読売28部(金・土・日読売$+1$)]};
+ \node(後本町1)at(0,-11)[e]{組換後：本町1丁目[読売14部・報知1部(土・日・月読売$+1$)]};
+ \node(後本町2)at(0,-12)[e]{組換後：本町2丁目[読売25部・報知1部]};
+ %
+ \draw[->,very thick](仲町12.east)--(仲町12-|O1)--(後仲町12-|O1)--(後仲町12.east)node[FN,pos=.5,fill=white]{読28$+1$};
+ \draw[->,very thick]($(後仲町2-|O1)+(0,.2)$)--($(後仲町2.east)+(0,.2)$)node[FN,pos=.5,fill=white]{読15};
+ \draw[->](仲町3.east)--(仲町3-|O2)--($(後仲町3-|O2)+(0,.2)$)--($(後仲町3.east)+(0,.2)$)node[pos=.5,FN,fill=white]{読16報$+1$};
+ \draw[->,dotted,very thick]($(後仲町3-|O4)+(0,-.2)$)--($(後仲町3.east)+(0,-.2)$)node[pos=.5,FN,fill=white]{読1};
+ \draw[->,dash dot,very thick](東町.east)--(東町-|O3)--($(後東町-|O3)+(0,.2)$)--($(後東町.east)+(0,.2)$)node[pos=.5,FN,fill=white]{読20};
+ \draw[->,dotted,very thick]($(後仲町2-|O4)+(0,-.2)$)--($(後仲町2.east)+(0,-.2)$)node[FN,pos=.5,fill=white]{読1};
+ \draw[->,dotted,very thick](柏台.east)--(柏台-|O4)--($(後東町-|O4)+(0,-.2)$)--($(後東町.east)+(0,-.2)$)node[pos=.5,FN,fill=white]{読3};
+ \draw[->,thick](本町1.east)--(本町1-|O5)--(後本町1-|O5)node[e,FN]{読$14+1$報1}--(後本町1.east);
+ \draw[->,thick,dash dot dot](本町2.east)--(本町2-|O6)--(後本町2-|O6)--(後本町2.east)node[pos=.5,FN,fill=white]{読25報1};
+\end{tikzpicture}
+\end{document}
